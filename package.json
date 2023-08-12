@@ -1,0 +1,10 @@
+{
+  "name": "md-to-anki",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Almaz Ilaletdinov <a.ilaletdinov@yandex.ru>",
+  "license": "MIT",
+  "dependencies": {
+    "mdanki": "1.1.2"
+  }
+}
