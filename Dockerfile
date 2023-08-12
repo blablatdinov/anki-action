@@ -20,9 +20,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-FROM node:20.5.1-alpine3.17
+# FROM node:20.5.1-alpine3.17
+FROM node:20.5.1
 
 WORKDIR /home
 COPY package.json package-lock.json entry.sh /home
 RUN npm install
+RUN ls -la /home
 ENTRYPOINT ["/home/entry.sh"]
