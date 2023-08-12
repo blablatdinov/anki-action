@@ -24,4 +24,5 @@ FROM node:20.5.1-alpine3.17
 
 WORKDIR /home
 COPY package.json package-lock.json entry.sh /home
+RUN npm install
 ENTRYPOINT ["/home/entry.sh"]
