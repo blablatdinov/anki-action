@@ -21,7 +21,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+set -e 
+set -x
+
 cd ${GITHUB_WORKSPACE-/w}
+${INPUT_CMD} ${INPUT_OPTS}
 ls -la
 
 for filename in $(ls .)
