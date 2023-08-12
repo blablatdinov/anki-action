@@ -1,3 +1,4 @@
+#!/bin/bash
 # MIT License
 #
 # Copyright (c) 2023 Almaz Ilaletdinov <a.Ilaletdinov@yandex.ru>
