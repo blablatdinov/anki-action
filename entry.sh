@@ -21,8 +21,9 @@
 # SOFTWARE.
 
 cd ${GITHUB_WORKSPACE-/w}
+ls -la
 
-for filename in $(ls cards)
+for filename in $(ls .)
 do
-  ./node_modules/mdanki/src/index.js cards/$filename cards.apkg
+  ./node_modules/mdanki/src/index.js $filename cards.apkg
 done
