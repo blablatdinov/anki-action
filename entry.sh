@@ -24,11 +24,14 @@
 set -e 
 set -x
 
+input_path="${1:-anki-cards}"
 cd ${GITHUB_WORKSPACE-/w}
-${INPUT_CMD} ${INPUT_OPTS}
+npm i
+cd $input_path
+
 ls -la
 
 for filename in $(ls .)
 do
-  ./node_modules/mdanki/src/index.js $filename cards.apkg
+  ../node_modules/mdanki/src/index.js $filename cards.apkg
 done

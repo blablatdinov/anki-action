@@ -26,8 +26,16 @@ branding:
   icon: alert-triangle
   color: orange
 runs:
-  using: 'docker'
-  image: Dockerfile
+  using: 'composite'
+  steps:
+    - run: ls -la
+      shell: bash
+    - run: ./entry.sh ${{ inputs.path }}
+      shell: bash
+    - uses: actions/upload-artifact@v2
+      with:
+        name: anki-cards
+        path: /home/runner/work/anki-action/anki-action/anki-cards/cards.apkg
 inputs:
   path:
     description: 'The directory with .md files'
