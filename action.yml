@@ -19,11 +19,25 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
-FROM node:20.5.1
-
-WORKDIR /home
-COPY package.json package-lock.json entry.sh /home
-RUN npm install
-RUN ls -la /home
-ENTRYPOINT ["/home/entry.sh"]
+---
+name: 'anki-action'
+description: 'Build anki cards from .md files'
+branding:
+  icon: alert-triangle
+  color: orange
+runs:
+  using: 'composite'
+  steps:
+    - run: ls -la
+      shell: bash
+    - run: ./entry.sh ${{ inputs.path }}
+      shell: bash
+    - uses: actions/upload-artifact@v2
+      with:
+        name: anki-cards
+        path: /home/runner/work/anki-action/anki-action/anki-cards/cards.apkg
+inputs:
+  path:
+    description: 'The directory with .md files'
+    required: false
+    default: 'anki-cards'

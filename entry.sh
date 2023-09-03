@@ -1,3 +1,4 @@
+#!/bin/bash
 # MIT License
 #
 # Copyright (c) 2023 Almaz Ilaletdinov <a.Ilaletdinov@yandex.ru>
@@ -20,10 +21,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-FROM node:20.5.1
+set -e 
+set -x
 
-WORKDIR /home
-COPY package.json package-lock.json entry.sh /home
-RUN npm install
-RUN ls -la /home
-ENTRYPOINT ["/home/entry.sh"]
+input_path="${1:-anki-cards}"
+cd ${GITHUB_WORKSPACE-/w}
+npm i
+cd $input_path
+
+ls -la
+
+for filename in $(ls .)
+do
+  ../node_modules/mdanki/src/index.js $filename cards.apkg
+done
