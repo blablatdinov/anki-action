@@ -30,7 +30,7 @@ runs:
   steps:
     - run: ls -la
       shell: bash
-    - run: ./entry.sh ${{ inputs.path }}
+    - run: ${{ github.action_path }}/entry.sh ${{ inputs.path }}
       shell: bash
     - uses: actions/upload-artifact@v2
       with:
