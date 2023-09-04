@@ -24,10 +24,8 @@
 set -e 
 set -x
 
-input_path="${1:-anki-cards}"
 cd ${GITHUB_WORKSPACE-/w}
-npm i
-cd $input_path
+cd $INPUT_PATH
 
 ls -la
 
