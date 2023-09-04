@@ -35,3 +35,5 @@ for filename in $(ls .)
 do
   ../node_modules/mdanki/src/index.js $filename cards.apkg
 done
+path_to_output='/github/workspace/anki-cards/cards.apkg'
+echo "path_to_output=$path_to_output" >> $GITHUB_OUTPUT
