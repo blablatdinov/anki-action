@@ -19,7 +19,7 @@ To use this GitHub Action in your repository, follow these steps:
 3. Create or update your GitHub Actions workflow file (e.g., `.github/workflows/anki-action.yml`) with the following content:
 
 ```yaml
-name: latexmk
+name: build-anki-cards
 on:
   push:
 jobs:
@@ -27,7 +27,12 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: blablatdinov/anki-action@0.5.0
+      - uses: blablatdinov/anki-action@0.6.0
         with:
           path: anki-cards
+      - name: Export anki cards to artifactory
+        uses: actions/upload-artifact@v3
+        with:
+          name: cards.apkg
+          path: ${{ github.workspace }}/cards.apkg
 ```
