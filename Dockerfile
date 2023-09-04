@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-FROM node:20.5.1
+FROM node:20.5.1-slim
 
 WORKDIR /home
 COPY package.json package-lock.json entry.sh /home

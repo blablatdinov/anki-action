@@ -24,16 +24,18 @@
 set -e 
 set -x
 
-input_path="${1:-anki-cards}"
 cd ${GITHUB_WORKSPACE-/w}
-npm i
-cd $input_path
+
+ls -la
+
+cd $INPUT_PATH
 
 ls -la
 
 for filename in $(ls .)
 do
-  ../node_modules/mdanki/src/index.js $filename cards.apkg
+  /home/node_modules/mdanki/src/index.js $filename cards.apkg
 done
-path_to_output='/github/workspace/anki-cards/cards.apkg'
+cp /github/workspace/anki-cards/cards.apkg /github/workspace
+path_to_output='/github/workspace/cards.apkg'
 echo "path_to_output=$path_to_output" >> $GITHUB_OUTPUT

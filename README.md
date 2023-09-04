@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: blablatdinov/anki-action@0.4.0
+      - uses: blablatdinov/anki-action@0.5.0
         with:
           path: anki-cards
 ```
